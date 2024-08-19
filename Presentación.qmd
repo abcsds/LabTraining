@@ -24,6 +24,8 @@ format:
     pdf:
         number-sections: true
         colorlinks: true
+    html:
+        code-fold: true
 code-fold: true
 jupyter: julia-1.10
 bibliography: references.bib
@@ -510,18 +512,15 @@ fig
 
 ## Problemas de reproducibilidad en ciencias cognitivas
 
-The Open Science Collaboration (2015) [https://osf.io/82fth]
-36% de los estudios replicados tuvieron resultados significativos, comparado con 97% de los estudios originales. @open2015
+- The Open Science Collaboration (2015) https://osf.io/82fth: 36% de los estudios replicados tuvieron resultados significativos, comparado con 97% de los estudios originales. @open2015
 
-The Many Labs Project (2014) [https://osf.io/wx7ck/]
-10 de 13 estudios replicados tuvieron resultados significativos, comparado con 13 de 13 estudios originales. @klein2013
-
+The Many Labs Project (2014) https://osf.io/wx7ck/:  10 de 13 estudios replicados tuvieron resultados significativos, comparado con 13 de 13 estudios originales. @klein2013
 
 ## Prácticas questionables en investigación
 
 John, L. K., Loewenstein, G., & Prelec, D. (2012). Measuring the prevalence of questionable research practices with incentives for truth telling. Psychological science, 23(5), 524-532. [https://www.cmu.edu/dietrich/sds/docs/loewenstein/MeasPrevalQuestTruthTelling.pdf] @john2012
 
-```
+
 1. In a paper, failing to report all of a study’s dependent measures.
 2. Deciding whether to collect more data after looking to see whether the results were significant.
 3. In a paper, failing to report all of a study’s conditions.
@@ -532,7 +531,7 @@ John, L. K., Loewenstein, G., & Prelec, D. (2012). Measuring the prevalence of q
 8. In a paper, reporting an unexpected finding as having been predicted from the start.
 9. In a paper, claiming that results are unaffected by demographic variables (e.g., gender) when one is actually unsure (or knows that they do).
 10. Falsifying data.
-```
+
 
 ## Modelado y Variables latentes
 
@@ -698,6 +697,7 @@ Hicimos un experimento, en el que el 30% de nuestros participantes reportaron re
 
 ::: {.callout-tip collapse="true"}
 __Solución__:
+
 - $P(D) = 0.3$
 - $P(¬D) = 0.7$
 - $P(A|D) = 0.5$
@@ -720,22 +720,28 @@ Ambas se pueden obtener de una matriz de confusión, y describen completamente e
 | Positivo | TP      | FP   |
 | Negativo | FN      | TN   |
 
+---
+
 En este caso:
+
 |  %  | Enfermo | Sano |
 | --- | ------- | ---- |
 | +   | 0.99    | 0.05 |
 | -   | 0.01    | 0.95 |
 
 ::: {.callout-tip collapse="true"}
+
 - $P(D) = 0.01$
 - $P(¬D) = 0.99$
 - $P(+) = P(+|D) * P(D) + P(+|¬D) * P(¬D) = 0.99 * 0.01 + 0.05 * 0.99 = 0.0585$
 - $P(D|+) = P(+|D) * P(D) / P(+) = 0.99 * 0.01 / 0.0585 = 0.1684$
+
 :::
 
 ## Más material
 
 Para desarrollar una intuición sobre el teorema de Bayes, sugiero los videos de Grant Sanderson en 3Blue1Brown:
+
 - [Bayes Theorem](https://youtu.be/HZGCoVF3YvM)
 - [Bayes Theorem Proof](https://youtu.be/U_85TaXbeIo)
 - [Bayes Theorem Examples](https://youtu.be/lG4VkPoG3ko)
@@ -756,22 +762,23 @@ El marco de test de hipótesis no excluye el análisis bayesiano. De hecho, el t
 
 ![JASP](https://jasp-stats.org/wp-content/uploads/2024/07/front.page_.0.19.0.0-site.png)
 
-La herramienta más actual para hacer estos tests es JASP. JASP es un software de código abierto, desarrollado por la Universidad de Amsterdam, que permite hacer análisis bayesianos de forma sencilla. Pueden descargarlo de [aquí](https://jasp-stats.org/).
+La herramienta que utilizamos para hacer estos tests es JASP. JASP es un software de código abierto, desarrollado por la Universidad de Amsterdam, que permite hacer análisis bayesianos de forma sencilla. Pueden descargarlo de [aquí](https://jasp-stats.org/).
 
 ## Meta-Ciencia
 
-El método cientifico se puede aplicar a la ciencia misma. Lo que llamamos meta-ciencia es el proceso de analizar los métodos y prácticas del laboratorio a travez de análisis estructurado y crítico. La inferencia bayesiana es una herramienta poderosa para la meta-ciencia, ya que nos permite cuantificar la evidencia en contra o a favor de hipótesis a lo largo de varios estudios. Aunado a esta técnica, existen otras herramientas que nos permitirán mantener un manejo **explicito** de nuestros conocimientos cientificos. Lectura sugerida: @hofstadter1999.
+El método cientifico se puede aplicar a la ciencia misma. Lo que llamamos meta-ciencia es el proceso de analizar los métodos y prácticas del laboratorio a travez de **análisis estructurado y crítico**. Aunado a la inferencia bayesiana, existen otras herramientas que nos permitirán mantener un manejo **explicito** de nuestros conocimientos cientificos.
+
+Lectura sugerida: @hofstadter1999.
 
 **Pregunta:** ¿Cuál es el rol del cientifico en la sociedad?
 
-<!-- Meta-Ciencia, Ética, Bibliometría, SNA, PM, KM, Mindfulness and Cognitive Flexibility -->
 ## Manejo y gestion del Conocimiento
 
-El manejo del conocimiento es el proceso de adquirir, almacenar, compartir y utilizar el conocimiento de una Institución. El conocimiento es un activo intangible que puede ser difícil de cuantificar y medir.
+El manejo del conocimiento es el proceso de adquirir, almacenar, compartir y utilizar el conocimiento. El conocimiento es un **activo intangible** que puede ser difícil de cuantificar y medir.
 
 __Definiciones__:
 
- - Conocimiento Tácito: Conocimiento que no se puede expresar en palabras, pero se puede demostrar a través de acciones.
+ - Conocimiento Tácito (Implicito): Conocimiento que no se puede expresar en palabras, pero se puede demostrar a través de acciones.
  - Conocimiento Explicito: Conocimiento que se puede expresar en palabras y se puede compartir con otros.
  - Institución: Conjunto de creencias que se expresan en el comportamiento de un grupo de personas.
  - Conocimiento institucionalizado: Conocimiento que se ha convertido en parte de la estructura de una organización.
@@ -779,14 +786,60 @@ __Definiciones__:
 
 **Pregunta:** ¿De que formas explicitas se maneja el conocimiento cientifico? ¿Qué formas implicitas de conocimiento cientifico conocen?
 
+## Pirámide del conocimiento
+
+La pirámide del conocimiento es una representación visual de la jerarquía del conocimiento. 
+
+![DIKW](DIKW.jpg)
+
+Img: @flood2016
+
+## Sesgos Cognitivos
+
+El pensamiento humano falla comunmente de formas predecibles y sistemáticas. A estos fallos sistemáticos del pensamiento se les conoce como sesgos cognitivos. Los sesgos cognitivos pueden afectar la toma de decisiones y la interpretación de la información. Algunos de los sesgos cognitivos más comunes son:
+
+- Sesgo de **confirmación**: Tendencia a buscar, interpretar y recordar información que confirma nuestras creencias preexistentes.
+- Sesgo de **anclaje**: Tendencia a depender demasiado de la primera información que se recibe.
+- Sesgo de **disponibilidad**: Tendencia a sobreestimar la importancia de la información que se recuerda con mayor facilidad.
+- Sesgo de **representatividad**: Tendencia a juzgar la probabilidad de un evento en función de lo bien que se ajusta a un prototipo.
+- Sesgo de **atribución**: Tendencia a atribuir los éxitos a factores internos y los fracasos a factores externos.
+- Sesgo de **sobrevivencia**: Tendencia a centrarse en los éxitos y a ignorar los fracasos.
+
+[![Codex de Sesgos Cognitivos](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg)](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg)
+
+## Técnica de Lectura de Artículos Científicos
+
+- Proposito: ¿Para qué estoy leyendo este artículo? ¿Qué información necesito obtener de él?
+- Busqueda: ¿Cómo puedo evitar el sesgo de confirmación?
+- Título: ¿Existe una relación con lo que busco? ¿Es relevante?
+- Autores: ¿Quiénes son los autores? ¿Son expertos en el tema?
+- Resumen: ¿Qué se investigó? ¿Cuál es el objetivo del estudio? ¿Cuál es el resultado que presumen?
+- Resultados: ¿El resultado del resumen está respaldado por los datos presentados?
+- Si los resultados parecen congruentes con el objetivo, entonces pasamos a:
+- Métodos: ¿Cómo se realizó el estudio? ¿Qué técnicas se utilizaron? ¿Qué datos se recopilaron?
+- Discusión: ¿Los resultados son consistentes con la literatura previa? ¿Tiene sentido el estudio? ¿Qué implicaciones tiene el estudio?
+- Mis conclusiones: ¿Qué aprendí de este artículo? ¿Respaldó mi hipótesis? ¿Qué preguntas me quedan?
+
 ## Bibliometría
 
 La bibliometría es el estudio **cuantitativo** de la producción, difusión, interconectividad, y uso de la información científica. La bibliometría se puede utilizar para evaluar la calidad de la investigación, identificar tendencias en la investigación y evaluar la eficacia de las políticas de investigación. Generalmente depende de las publicaciones en revistas científicas.
 
 __Definiciones__:
- - Factor de Impacto: Medida de la frecuencia con la que los artículos de una revista científica son citados en un año determinado.
- - Índice H: Medida de la productividad y el impacto de un científico basada en el número de citas que recibe un científico.
 
+::: {.columns}
+::: {.column width=50%}
+
+ - [Factor de Impacto](https://en.wikipedia.org/wiki/Impact_factor): Medida de la frecuencia con la que los artículos de una revista científica son citados en un año determinado.
+$$
+  IF = \frac{\text{Citas}}{\text{Publicaciones}_{2 años}}
+$$
+
+:::
+::: {.column width=50%}
+
+ - [Índice H](https://en.wikipedia.org/wiki/H-index): Medida de la productividad y el impacto de un científico basada en el número de citas que recibe un científico. Un autor con un dado indice H ha publicado H artículos que han sido citados al menos H veces.
+:::
+:::
 ## Redes Sociales
 
 Una de las formas de medir la interconectividad de la información científica es a través de las estructuras sociales e individuos que la producen. El análisis de redes sociales es una técnica que se utiliza para analizar la estructura de las relaciones entre individuos y organizaciones. Se puede utilizar para identificar patrones de colaboración, identificar líderes de opinión y evaluar la eficacia de las políticas de investigación.
@@ -805,13 +858,114 @@ img: @snowden2007
 
 ## Herramientas
 
-- [Google Scholar](https://scholar.google.com/): Motor de búsqueda de literatura académica. (Google scholar button)
-- [JASP](https://jasp-stats.org/): Herramienta de análisis estadístico bayesiano.
-- [Zotero](https://www.zotero.org/): Herramienta de gestión de referencias y citas.
-- [ResearchRabbit](https://www.researchrabbit.ai/): Herramienta de exploración de referencias.
-- [ClickUp](https://clickup.com/): Herramienta de gestión de proyectos. Nuestra única herramienta que aún no es abierta. Estamos buscando alternativas.
+### Buscadores
 
-Tenemos accesso a muchos otros buscadores cientificos, pero hablaremos de ellos en detalle en persona.
+- [**Google Scholar**](https://scholar.google.com/): Motor de búsqueda de literatura académica. (Google scholar button)
+- [**PubMed**](https://pubmed.ncbi.nlm.nih.gov/): Base de datos de literatura médica: National Library of Medicine USA.
+- [**Semantic Scholar**](https://www.semanticscholar.org/): Motor de búsqueda de literatura científica y académica.
+- [Web of Science](https://www.webofscience.com/): Base de datos de literatura científica para la que se requiere una suscripción.
+- [Scopus](https://www.scopus.com/): Base de datos de literatura científica de Elsevier.
+- [Crossref](https://www.crossref.org/): Base de datos de referencias y citas (Libreria de metadatos).
+- [Clarivate](https://jcr.clarivate.com/jcr/home): Base de datos de literatura científica para la que se requiere una suscripción.
+- [Paperpanda](https://paperpanda.com/): Motor de búsqueda de literatura científica.
+- [ConnectedPapers](https://www.connectedpapers.com/): Herramienta de visualización de referencias y citas.
+- [IOP Publishing](https://iopscience.iop.org/): Base de datos de literatura científica.
+- Otros: Tenemos accesso a algunos otros buscadores cientificos.
+
+---
+
+### Datos y pre-processamiento 
+
+::: {.columns}
+
+::: {.column width=50%}
+- [OpenNeuro](https://openneuro.org/): Base de datos de datos de neuroimagen.
+- [Wikidata](https://www.wikidata.org/): Base de datos de conocimiento libre y abierta.
+- [Academic Torrents](https://academictorrents.com/browse.php): Tecnología de datos distribuidos para la comunidad científica.
+- [Kaggle](https://www.kaggle.com/): Base de datos de todo tipo, para competencias de ciencia de datos.
+- [Zenodo](https://zenodo.org/): Repositorio de datos y software científicos.
+- [Open Science Framework](https://osf.io/): Repositorio de proyectos científicos.
+:::
+
+::: {.column width=50%}
+- [**MNE y tutoriales**](https://mne.tools/stable/auto_tutorials/index.html): Herramienta open source para procesamiento de señales EEG y MEG. Incluye muy completos tutoriales.
+- [**LabStreamingLayer (LSL)**](https://labstreaminglayer.readthedocs.io/index.html): Herramienta para connectividad de dispositivos usando TCP/IP.
+
+Toolboxes de Matlab:
+
+- [Brainstorm](https://neuroimage.usc.edu/brainstorm/): Procesamiento de señales EEG y MEG.
+- [FieldTrip](https://www.fieldtriptoolbox.org/): Procesamiento de señales EEG y MEG.
+- [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php): Procesamiento de señales EEG.
+- [SPM](https://www.fil.ion.ucl.ac.uk/spm/): Procesamiento de señales de neuroimagen.
+
+:::
+
+:::
+
+---
+
+## Manejo de citas
+
+::: {.columns}
+
+::: {.column width=50%}
+- [Zotero](https://www.zotero.org/): La herramienta que yo uso.
+- [Mendeley](https://www.mendeley.com/): La herramienta que la Dra. Sanchez Gamma usa.
+- [EndNote](https://endnote.com/): La herramienta de microsoft: tal vez ustedes tengan acceso o experiencia con ella.
+- [Paperpile](https://paperpile.com/): Herramienta alternativa de gestión de referencias y citas.
+:::
+
+::: {.column width=50%}
+- [LaTex](https://www.latex-project.org/): Herramienta de escritura de documentos científicos.
+- [Overleaf](https://www.overleaf.com/): Herramienta de escritura colaborativa de documentos científicos.
+- [GoogleScholarButton](https://addons.mozilla.org/en-US/firefox/addon/google-scholar-button/): Complemento de exploradores para buscar literatura científica.
+- [ScienceResearchAssistant](https://chromewebstore.google.com/detail/science-research-assistan/ceacgaccjcomdbnoodjpllihjmeflfmg?hl=en&pli=1): Complemento de Chrome para buscar literatura científica.
+- [OpenAccessButton](https://openaccessbutton.org/): Herramienta para encontrar artículos de acceso abierto.
+:::
+
+:::
+
+
+## Análisis
+
+::: {.columns}
+
+::: {.column width=50%}
+- [**JASP**](https://jasp-stats.org/): Herramienta de análisis estadístico frequentista y bayesiano.
+- [JAMOVI](https://www.jamovi.org/): Herramienta de análisis estadístico basada en R.
+- [R](https://www.r-project.org/): Lenguaje de programación estadística.
+- [R Studio](https://rstudio.com/): Entorno de desarrollo integrado para R.
+- [Julia](https://julialang.org/): Lenguaje de programación de alto rendimiento para la ciencia.
+- [Python](https://www.python.org/): Lenguaje de programación de propósito general.
+- [SPSS](https://www.ibm.com/analytics/spss-statistics-software): Herramienta de análisis estadístico: Aquí no promovemos la pratería, así que no la usaremos con ustedes. Existen suficientes herramientas adecuadas como para obligarlos a usar esta.
+:::
+
+::: {.column width=50%}
+- [ResearchRabbit](https://www.researchrabbit.ai/): Herramienta de exploración de redes de referencias.
+- [Elicit](https://elicit.org/): Herramienta AI de análisis de literatura científica.
+- [Consensus](https://consensus.app/): Herramienta AI útil para preguntas "Si o no".
+- [Python Scholarly](https://pypi.org/project/scholarly/): Herramienta de búsqueda de literatura científica en Python, usando google scholar.
+- [PyBibliometrics](https://pypi.org/project/pybibliometrics/): Herramienta de análisis de literatura científica en Python, principalmente scopus.
+- [Python SemanticScholar](https://pypi.org/project/semanticscholar/): Herramienta de búsqueda de literatura científica y autores en Python.
+- [Padron del SNII](https://conahcyt.mx/sistema-nacional-de-investigadores/padron-de-beneficiarios/): Lista de investigadoras/es en México.
+:::
+
+:::
+
+## Gestión de Proyectos
+
+- [ClickUp](https://clickup.com/): Herramienta de gestión de proyectos. Mi única herramienta que aún no es abierta. Estamos buscando alternativas.
+- [Asana](https://asana.com/): TODO list con colaboración.
+- [Trello](https://trello.com/): Común entre desarrolladores de software, diseñadores y equipos de marketing, usa metodo Kanban (Basado en pizarroncitos).
+- [Notion](https://www.notion.so/): Herramienta de gestión de proyectos muy poderosa, para quien no sabe programar.
+- [Obsidian](https://obsidian.md/): Originalmente para tomar notas, pero programada en javascript, así que tiene extenciones para todo.
+- [Logseq](https://logseq.com/): Llegó despues de Obsidian, pero es gratis y open source.
+- [Vikunja](https://vikunja.io/): Herramienta de colaboración sencilla que se puede mantener en tu propio servidor.
+
+### Comunicación
+
+La universidad de LaSalle tiene una licencia de Microsoft Teams. Hemos estado usando WhatsApp.
+Teams está hecho para solucionar nuestro tipo de problemas.
 
 ## Habilidades Cognitivas
 
