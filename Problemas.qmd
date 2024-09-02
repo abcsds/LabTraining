@@ -1,0 +1,148 @@
+---
+title: "Problemas de probabilidad"
+author: "Alberto Barradas"
+format: 
+    revealjs:
+        slideNumber: true
+        center: true
+        controls: true
+        progress: true
+        history: true
+        # transition: 'slide'
+        # theme: 'black'
+        theme: 'white'
+        width: 1920
+        height: 1080
+        margin: 0.1
+        # hash: true
+        # separator: '^\n---\n'
+        # verticalSeparator: '^\n--\n'
+    beamer: 
+        aspectratio: 169
+        theme: "default"
+        colorlinks: true
+    pdf:
+        number-sections: true
+        colorlinks: true
+    html:
+        code-fold: true
+code-fold: true
+jupyter: julia-1.10
+bibliography: references.bib
+---
+
+## Probabilidad Condicional
+
+Como hemos visto, no todos los eventos son independientes. La probabilidad de que ocurra un evento puede depender de que ocurra otro evento. A esto se le llama probabilidad condicional. La probabilidad de que ocurra un evento A dado que ocurra un evento B se denota como $P(A|B)$. La probabilidad condicional se puede calcular como el cociente de la probabilidad conjunta de $A$ y $B$ entre la probabilidad de $B$. $P(A|B) = P(A ∩ B) / P(B)$.
+
+__Definiciones__:
+
+- **Independencia**: Dos eventos son independientes si la probabilidad de que ocurra uno no depende de que ocurra el otro. $P(A|B) = P(A)$.
+- **Dependencia**: Dos eventos son dependientes si la probabilidad de que ocurra uno depende de que ocurra el otro. $P(A|B) ≠ P(A)$.
+- **Probabilidad Conjunta**: La probabilidad de que ocurran dos eventos simultáneamente. $P(A ∩ B)$.
+- **Probabilidad Marginal**: La probabilidad de que ocurra un evento sin importar si ocurre otro evento. $P(A)$.
+
+## **Ejemplo**:
+
+La probabilidad de que un estudiante apruebe un examen de matemáticas es de 0.7. La probabilidad de que un estudiante apruebe un examen de matemáticas y física es de 0.5. La probabilidad de que un estudiante apruebe un examen de física es de 0.6. ¿Cuál es la probabilidad de que un estudiante apruebe un examen de matemáticas dado que aprobó un examen de física?
+
+::: {.callout-tip collapse="true"}
+
+## __Solución__
+
+- P(A) = 0.7
+- P(A ∩ B) = 0.5
+- P(B) = 0.6
+- P(A|B) = P(A ∩ B) / P(B) = 0.5 / 0.6 = 0.8333
+
+:::
+
+## Teorema de Bayes
+
+El teorema de Bayes es una regla para actualizar creencias con base en evidencias. Nos permite calcular la probabilidad de una hipótesis dada una evidencia. La probabilidad de una hipótesis $H$ dado un conjunto de evidencias $E$ se puede calcular como el producto de la probabilidad de la evidencia dado la hipótesis $P(E|H)$ por la probabilidad de la hipótesis $P(H)$ dividido por la probabilidad de la evidencia $P(E)$.
+
+$$
+P(H|E) = \frac{P(E|H) * P(H)}{P(E)} = \frac{P(E|H) * P(H)}{P(E|H) * P(H) + P(E|¬H) * P(¬H)}
+$$
+
+## Analogía visual {.scrollable}
+
+::: {#fig-bayes layout-ncol="2"}
+
+[![VisualBayes](https://upload.wikimedia.org/wikipedia/commons/c/c9/Bayes_theorem_visual_proof.svg)](https://upload.wikimedia.org/wikipedia/commons/c/c9/Bayes_theorem_visual_proof.svg)
+
+:::
+
+## Aplicando el teorema de Bayes al TDA
+
+La prevalencia del TDA en mexicanos es de ~4.4% [@ortiz2016]. Existe una prueba basada en el DSM-5, el DIVA, que tiene una sensibilidad del 90% y una especificidad del 72% [@pettersson2018]. ¿Cuál es la probabilidad de que un mexicano tenga TDA si la prueba es positiva?
+
+## Planteamiento 
+
+La sensibilidad se refiere a la probabilidad de que una prueba de un resultado positivo dado que la persona tiene la característica de la prueba. La especificidad se refiere a la probabilidad de que la prueba sea negativa dado que la persona no tiene dada caracteristica.
+Ambas se pueden obtener de una **matriz de confusión**, y describen completamente el desempeño de una prueba de detección.
+
+|          | Presenta TDA | No presenta TDA   |
+| -------- | ------------ | ----------------- |
+| Positivo | TP (Sens)    | FP                |
+| Negativo | FN           | TN (Espec)        |
+
+## Solución
+
+Prevalencia: 0.044
+
+|     | Presenta TDA | No presenta TDA |
+| --- | ------------ | --------------- |
+| +   | 0.90         | 0.28            |
+| -   | 0.10         | 0.72            |
+
+---
+
+::: {.callout-tip collapse="true"}
+
+ - $P(P) = 0.044$
+ - $P(¬P) = 1 - P(P) = 0.956$
+ - $P(+) = P(+|P) * P(P) + P(+|¬P) * P(¬P) = 0.90 * 0.044 + 0.28 * 0.956 = 0.3073$
+ - $P(P|+) = P(+|P) * P(P) / P(+) = 0.90 * 0.044 / 0.3073 = 0.1289$
+
+:::
+
+La probabilidad de que una persona en México tenga TDA si la prueba es positiva es de 0.1289: 12.89%. Esto es uno de cada ocho mexicanos con un resultado positivo en la prueba.
+
+## Corroboración
+
+La probabilidad de tener una prueba positiva y la probabilidad de tener una prueba negativa son excluyentes y exhaustivas.
+
+ - $P(+) = P(+|P) * P(P) + P(+|¬P) * P(¬P) = 0.90 * 0.044 + 0.28 * 0.956 = 0.3073$
+
+ - $P(-) = P(-|P) * P(P) + P(-|¬P) * P(¬P) = 0.10 * 0.044 + 0.72 * 0.956 = 0.6927$
+
+ - $0.3073 + 0.6927 = 1$
+
+---
+
+## Actualizar creencias
+
+¿Qué podemos hacer para mejorar nuestra certeza sobre la enfermedad de una persona que ha sido diagnosticada positivamente?
+
+## Actualizar creencias
+
+Aplicando la misma prueba una segunda vez, el paciente obtuvo un resultado positivo. ¿Cómo cambia nuestra certeza?
+
+En este caso, por la naturaleza subjetiva de la prueba, aplicarla una segunda vez no cambia nuestra certeza. En vez de eso, podemos preguntar a un segundo experto para obtener una segunda opinión.
+
+¿Cuál es la probabilidad de que una persona mexicana tenga TDA si un segundo experto independiente diagnostica con TDA, dado que el primer experto también lo hizo?
+
+## Solución
+
+En este caso nuestra probabilidad a priori es la probabilidad de tener TDA dado que el primer experto lo diagnosticó.
+
+::: {.callout-tip collapse="true"}
+
+$P(P|++) = P(+|P) * P(P) / P(+) = P(+|P) * P(P|+) / P(+)$
+
+$P(P|++) = P(+|P) * P(P|+) / P(+) = 0.90 * 0.1289 / 0.3073 = 0.3775$
+
+:::
+
+## Referencias
